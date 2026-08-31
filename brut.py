@@ -52,7 +52,6 @@ if __name__ == "__main__":
     target = input("Введите пароль для брутфорса: ")
     max_len = int(input("Максимальная длина пароля: "))
     
-    use_parallel = input("Использовать параллельный режим? (y/n): ").lower() == 'y'
     use_custom_charset = input("Использовать кастомный набор символов? (y/n): ").lower() == 'y'
     
     if use_custom_charset:
@@ -64,10 +63,9 @@ if __name__ == "__main__":
         print(f"Автоматически выбран набор: {''.join(charset)}")
     
     print("\nНачало брутфорса...")
-    if use_parallel:
-        result = brute_force_parallel(target, max_len, charset)
-    else:
-        result = brute_force_sequential(target, max_len, charset)
+    
+    result = brute_force_parallel(target, max_len, charset)
+
     
     if result:
         print(f"\nПароль взломан: {result['password']}")
